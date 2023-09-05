@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AproposController!{% endblock %}
+
+{% block body %}
+<style>
+   p{text-align:center;}
+#titre{color:black;font-family: 'Anton', sans-serif;font-size:65px;}
+#accroche{color:#331B29}
+#intro{margin-bottom:50px;}
+#belgique{height:200px;text-align:center;color:white;font-weight:bold;font-size:45px;padding-top:75px;font-family: 'ZCOOL XiaoWei', serif;background-image:url('https://images.unsplash.com/photo-1542561178-f894b5d91c1c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=28ac1acdfeed77dfca0e95544eceb08b&auto=format&fit=crop&w=1378&q=80');background-size:100%;background-position: 0% 70%}
+#pays-bas{height:200px;text-align:center;color:white;font-weight:bold;font-size:45px;padding-top:75px;font-family: 'ZCOOL XiaoWei', serif;background-image:url('https://www.tangka.com/wp-content/uploads/amsterdam_1534404553.jpg');background-size:100%;background-position: 0% 70%}
+#danemark{height:200px;text-align:center;color:white;font-weight:bold;font-size:45px;padding-top:75px;font-family: 'ZCOOL XiaoWei', serif;background-image:url('https://x7m7u8e3.stackpathcdn.com/wp-content/uploads/2016/04/d24ba1c4edf86edfe70f25994811c2c3_large.jpeg?iv=21');background-size:100%;background-position: 0% 70%}
+#allemagne{height:200px;text-align:center;color:white;font-weight:bold;font-size:45px;padding-top:75px;font-family: 'ZCOOL XiaoWei', serif;background-image:url('https://images.unsplash.com/photo-1528502500164-ddfa429afa70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');background-size:100%;background-position: 0% 70%}
+#republique{height:200px;text-align:center;color:white;font-weight:bold;font-size:45px;padding-top:40px;font-family: 'ZCOOL XiaoWei', serif;background-image:url('https://images.unsplash.com/photo-1541849546-216549ae216d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');background-size:100%;background-position: 0% 70%}
+#hongrie{height:200px;text-align:center;color:white;font-weight:bold;font-size:45px;padding-top:75px;font-family: 'ZCOOL XiaoWei', serif;background-image:url('https://images.unsplash.com/photo-1539106863727-d011fd10d17c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');background-size:100%;background-position: 0% 70%}
+#slovaquie{height:200px;text-align:center;color:white;font-weight:bold;font-size:45px;padding-top:75px;font-family: 'ZCOOL XiaoWei', serif;background-image:url('https://images.unsplash.com/photo-1527002836355-e11c5be50cf8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');background-size:100%;background-position: 0% 70%}
+#roumanie{height:200px;text-align:center;color:white;font-weight:bold;font-size:45px;padding-top:75px;font-family: 'ZCOOL XiaoWei', serif;background-image:url('https://vp-eu.scene7.com/is/image/vpeu/00_60394_INT_002-000037253-seodescriptiontoseedetails-2857-1-v1');background-size:100%;background-position: 0% 70%}
+#bulgarie{height:200px;text-align:center;color:white;font-weight:bold;font-size:45px;padding-top:75px;font-family: 'ZCOOL XiaoWei', serif;background-image:url('https://cache-graphicslib.viator.com/graphicslib/page-images/742x525/411778_Viator_Shutterstock_194303.jpg');background-size:100%;background-position: 0% 70%}
+#grèce{height:200px;text-align:center;color:white;font-weight:bold;font-size:45px;padding-top:75px;font-family: 'ZCOOL XiaoWei', serif;background-image:url('https://cdn.civitatis.com/grecia/atenas/galeria/poros.jpg');background-size:100%;background-position: 0% 70%}
+#albanie{height:200px;text-align:center;color:white;font-weight:bold;font-size:45px;padding-top:75px;font-family: 'ZCOOL XiaoWei', serif;background-image:url('https://www.ou-et-quand.net/partir/images/illustration/vlore.jpg');background-size:100%;background-position: 0% 70%}
+#italie{height:200px;text-align:center;color:white;font-weight:bold;font-size:45px;padding-top:75px;font-family: 'ZCOOL XiaoWei', serif;background-image:url('https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/001/626/original/Bari-Visit-Alberobello-and-sleep-in-the-trulli-Puglia-Italy-1920x1080.jpg?1531132525');background-size:100%;background-position: 0% 70%}
+.fa-twitter{font-weight:bold;font-size:28px;color:#331B29; m}
+.fa-instagram{font-weight:bold;font-size:28px;color:#331B29}
+.fa-pinterest{font-weight:bold;font-size:28px;color:#331B29}
+.fa-youtube{font-weight:bold;font-size:28px;color:#331B29}
+.footer-social{list-style:none;margin:50px;text-decoration:none;text-align:center;padding:0;}
+.footer-social li{display:inline-block;margin:0 15px;}
+.formulaire h3{text-align:center;margin-top:70px;font-weight:bold}
+.formulaire #contact{margin-top:0;margin-right:auto;margin-left:auto;text-align:center;}
+.formulaire #contact input{padding:0 25px;margin:5px 0;border:1px solid;width:290px;height:40px}
+.formulaire #contact textarea{height:165px;padding:15px;margin:5px 0;width:290px}
+.formulaire #envoyer{width:50px;height:100px;margin-left:auto;margin-bottom:auto;background-color:#331B29;color:white;border-radius:8px}
+#envoyer:hover {background-color:white;color:black;text-align:center;border:2px solid #000}
+.footer-social h4{text-align:center;margin-top:70px;margin-bottom:35px;font-weight:bold}
+.zoom {padding:50px;transition:transform.6s;margin:0 auto}
+.zoom:hover {transform:scale(1.2);}
+#contact{font-family: 'Lobster', cursive;font-size:30px}
+#suivez-moi{font-family: 'Lobster', cursive;font-size:30px}
+#Prenom{font-family: 'Antic', sans-serif;font-size:17px}
+#Nom{font-family: 'Antic', sans-serif;font-size:17px}
+#Email{font-family: 'Antic', sans-serif;font-size:17px}
+#Message{font-family: 'Antic', sans-serif;font-size:17px}
+#envoyer{font-family: 'Antic', sans-serif;font-size:18px}
+</style>
+
+<link href="https://fonts.googleapis.com/css?family=Lobster&amp;subset=cyrillic-ext" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Antic|Lobster" rel="stylesheet">
+
+<h1> <p id="titre">TRANSATOUR</h1>
+<h2> <p id="accroche"> Notre agence vous guide vers les meilleurs offres !</p></h2>
+<p id="intro"> <br>Après 8 ans d'expertise dans le domaine de tourisme TRANSATOUR met a votre disposition une plateforme pour plongé avec nous dans ce monde magnifique. <br> </p>
+
+<div class="row">
+  <div id="belgique"class="col-md-3 zoom">Belgique</div>
+  <div id="pays-bas"class="col-md-3 zoom">Pays-bas</div>
+  <div id="danemark"class="col-md-3 zoom">Danemark</div>
+  <div id="allemagne"class="col-md-3 zoom">Allemagne</div>
+</div>
+<div class="row">
+  <div id="republique" class="col-md-3 zoom">République Tchèque</div>
+  <div id="hongrie"class="col-md-3 zoom">Hongrie</div>
+  <div id="slovaquie"class="col-md-3 zoom">Slovaquie</div>
+  <div id="roumanie"class="col-md-3 zoom">Roumanie</div>
+</div>
+<div class="row">
+  <div id="bulgarie"  class="col-md-3 zoom">Bulgarie</div>
+  <div id="grèce"class="col-md-3 zoom">Grèce</div>
+  <div id="albanie"class="col-md-3 zoom">Albanie</div>
+  <div id="italie"class="col-md-3 zoom">Italie</div>
+</div>
+  <br></br>
+  <br></br>
+
+
+  <p id=""> <br> Transatour France est une agence de voyages qui met aux services de ses clients son expérience, sa créativité et son professionnalisme, en organisation et gestion du voyage. Et ce grâce à une approche personnalisée, proposant des offres de qualité et adaptées à leurs besoins. Nos conseillers de voyages vous proposeront de découvrir de nombreux circuits, «à la carte » ou en groupe, avec dates de départ garanties, ainsi que des séjours balnéaires, plusieurs croisières, voire des itinéraires hors du commun dans plusieurs pays : Maroc, Thaïlande, Malaisie, Singapour, Turquie, Italie, France, Îles Maldives, Égypte, États Unis, République Dominicaine, et bien d’autres encore.
+
+    Transatour France est aussi une agence spécialisée dans le voyage OMRA, en proposant des séjours avec prise en charge de l’ensemble des formalités administratives et logistiques (visa, billet d’avion, hôtels, transferts, assistance…) pour vous garantir un voyage spirituel en toute tranquillité.</p></br>
+
+                            /**google maps*/
+  <div>
+
+      <script type='text/javascript' src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
+      <script>
+        $(document).ready(function() {
+
+          var myCenter=new google.maps.LatLng(45.992261, -123.925014);
+          var marker=new google.maps.Marker({
+            position:myCenter
+          });
+
+          function initialize() {
+            var mapProp = {
+              center:myCenter,
+              zoom: 14,
+              draggable: false,
+              scrollwheel: false,
+              mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
+
+            var map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
+            marker.setMap(map);
+
+            google.maps.event.addListener(marker, 'click', function() {
+
+              infowindow.setContent(contentString);
+              infowindow.open(map, marker);
+
+            });
+          };
+
+          $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            initialize();
+          });
+
+        });
+        </div>
+      </script>
+      <style type="text/css">
+        #map-canvas {
+          height:500px;
+        }
+      </style>
+
+
+
+
+
+     
+
+{% endblock %}

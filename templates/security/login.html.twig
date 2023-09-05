@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+
+<div class="col-lg-8 offset-lg-5">
+<h1>  connexion    </h1>
+</div>
+<div class="col-lg-8 offset-lg-2">
+<div class="container-fluid">
+        {% if error %}
+            <h2>this is the error</h2>
+             <div class=" erreur" > {{error.messageKey|trans(error.messageData, 'security') }}</div>
+         {% endif %}
+         {% if app.User %}
+            <div class="mb-3">
+                vous etes connécté(e) comme {{app.User.name}}, <a href="{{path('app_logout')}}"> me déconnecter</a>
+                
+            </div>
+        {% endif %}
+        <form  action="{{ path('app_login') }}"  method="post" >
+
+            <label for="username">Email:</label>
+                <input type="email" id="inputEmail" name="email" value="{{ last_username }}"/>
+        
+                <label for="password">Password:</label>
+                <input type="password" id="inputPassword" name="password"/>
+        
+        
+                <input type="hidden" name="_csrf_token" value="{{ 
+            csrf_token('authenticate') }}">
+                <button type="submit" >login</button>
+            </form>
+</div>
+
+
+</div>
+
+
+
+{% endblock %}

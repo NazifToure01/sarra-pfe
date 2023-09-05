@@ -1,0 +1,747 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OmraController!{% endblock %}
+
+{% block body %}
+
+
+
+<style>
+    :root {
+    --white: rgb(248, 242, 242);
+    --black: color: rgb(72, 61, 61);
+}
+
+html {
+    /* border-box box model allows us to add padding and border to our elements without increasing their size */
+    box-sizing: border-box;
+    /* A system font stack so things load nice and quick! */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body {
+    font-size: 15px;
+    margin: 50px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+h3 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+button {
+    background: rgba(92, 91, 91, 0.74);
+    border: 0;
+    padding: 10px 20px;
+    color: var(--white);
+    border-radius: 3px;
+}
+
+
+/*wrapper*/
+
+.wrapper {
+    display: grid;
+}
+
+.top {
+    display: grid;
+    grid-template-areas: "hero hero cta1" "hero hero cta2";
+    grid-gap: 20px;
+}
+
+.hero {
+    grid-area: hero;
+    min-height: 400px;
+    background: url(https://www.imore.com/sites/imore.com/files/styles/xlarge/public/field/image/2017/02/airplane-flight-sunset.jpg?itok=8iUtkHU-);
+    background-size: cover;
+    background-position: center;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    color: var(--white);
+    border-radius: 5px;
+}
+
+.hero>* {
+    background: rgba(24, 24, 99, 0.38);
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.top-icon {
+    color: #ffffff;
+    padding: 5px;
+}
+
+.cta {
+    background: rgba(191, 191, 191, .28);
+    display: grid;
+    border-radius: 5px;
+    grid-template-rows: repeat(2, minmax(auto-fit, 1fr));
+    justify-content: center;
+    align-content: center;
+    grid-gap: 20px;
+    box-shadow: 0 0 9px rgba(0, 0, 0, .2);
+}
+
+.details {
+    justify-self: center;
+    text-decoration: none;
+    color: rgba(15, 5, 5, 0.6);
+}
+
+.cta1 {
+    grid-area: cta1;
+}
+
+.cta2 {
+    grid-area: cta2;
+}
+
+.kinds {
+    font-size: 60px;
+    font-weight: 500;
+    color: rgba(23, 22, 22, 0.86);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.details {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+}
+
+
+/* Navigation */
+
+.menu ul {
+    display: grid;
+    list-style: none;
+    grid-gap: 10px;
+    margin: 30px -40px 0 0;
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+}
+
+.menu a {
+    background: #9e20206b;
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    color: var(--black);
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align: center;
+}
+
+[aria-controls="menu-list"] {
+    display: none;
+    padding: 6px 15px 6px 15px;
+}
+
+.features {
+    display: grid;
+    grid-gap: 20px;
+    color: #2e2c2c;
+    margin: 30px 0;
+}
+
+.feature {
+    background: rgba(23, 22, 22, 0.27);
+    padding: 10px;
+    border: 1px solid var(--white);
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+}
+
+.feature .icon {
+    font-size: 40px;
+    padding: 10px;
+}
+
+.feature p {
+    color: rgba(0, 0, 0, .5)
+}
+
+
+/* About Section */
+
+.about {
+    background: rgba(23, 22, 22, 0.1);
+    padding: 50px;
+    display: grid;
+    margin: 20px 0;
+    grid-gap: 20px;
+    grid-template-rows: auto 1fr;
+    justify-items: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+}
+
+.about-company {
+    justify-self: start;
+}
+
+img#img_galary {
+    width: 25%;
+}
+.gallery-one img{
+    width: 85% !important;
+}
+.row{
+    justify-content: center;
+}
+.col {
+    background: beige;
+    padding: 50px;
+    border-radius: 10px;
+    display: flex;
+}
+.about__mockup {
+    border-radius: 5px;
+}
+
+.about__details p {
+    color: rgb(48, 48, 48);
+}
+img#img_galary {
+    width: 25% !important;
+}
+.gallery-one img {
+    width: 50%;
+}
+
+.gallery-one h2 {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    grid-gap: 20px;
+}
+
+.gallery-one h2:before,
+.gallery-one h2:after {
+    display: block;
+    content: '';
+    height: 10px;
+    background: linear-gradient(to var( --direction, left), grey, transparent);
+}
+
+.gallery-one h2:after {
+    --direction: right;
+}
+
+img {
+    border-radius: 5px;
+ 
+
+}
+
+@media (max-width: 1000px) {
+    .menu {
+        order: -1;
+        margin: 0 0 20px 0;
+        perspective: 600px;
+    }
+    [aria-controls="menu-list"] {
+        display: block;
+        transition: all 0.5s;
+    }
+    .menu ul {
+        max-height: 0;
+        overflow: hidden;
+        transform: rotateX(90deg);
+        transition: all 0.6s;
+    }
+    [aria-expanded="true"]~ul {
+        display: grid;
+        max-height: 50px;
+        transform: rotateX(2deg);
+    }
+}
+
+@media (max-width: 700px) {
+    .top {
+        grid-template-areas: "hero hero" "cta1 cta2";
+    }
+}
+
+@media (max-width: 500px) {
+    .top {
+        grid-template-areas: "hero" "cta1" "cta2";
+    }
+}
+
+
+/*HJA overlay*/
+
+.overlay-haj {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: none;
+}
+
+.overlay-omra {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: none;
+}
+
+.overlay-haj.open {
+    display: grid;
+    grid-template-rows: 50px auto;
+}
+
+.overlay-omra.open {
+    display: grid;
+    grid-template-rows: 50px auto;
+}
+
+.overlay-inner {
+    color: var(--white);
+    display: grid;
+    grid-gap: 20px;
+    grid-auto-columns: auto;
+    grid-template-columns: repeat(4, 1fr);
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    margin: 5px;
+    padding: 10px;
+}
+
+.close {
+    margin: 5px;
+    align-self: start;
+    justify-self: start;
+    color: black;
+}
+
+.inner_info {
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    padding: 20px;
+}
+
+.inner-info-title {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}
+
+.inner_info p {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+}
+
+
+/*end HJA overlay*/
+
+
+/*OMRA overlay*/
+
+.overlay-omra {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: none;
+}
+
+.overlay-omra.open {
+    display: grid;
+    grid-template-rows: 50px auto;
+}
+
+
+/* end OMRA overlay*/
+
+
+/*transptation*/
+
+.transportation {
+    color: rgb(59, 59, 59);
+}
+
+.overlay-transp {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: none;
+}
+
+.overlay-transp.open {
+    display: grid;
+    grid-template-rows: 50px auto;
+}
+
+.overlay-inner-transp {
+    color: var(--white);
+    display: grid;
+    grid-gap: 20px;
+    grid-auto-columns: auto;
+    grid-template-rows: repeat(4, 1fr);
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    margin: 5px;
+    padding: 10px;
+}
+
+.close {
+    margin: 5px;
+    align-self: start;
+    justify-self: start;
+    color: black;
+}
+
+.inner_info-transp {
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    padding: 20px;
+}
+
+.inner-info-title-transp {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}
+
+.inner_info-transp ul {
+    text-align: right;
+}
+
+
+/*transptation*/
+
+
+/*hotal*/
+
+.hotal {
+    color: rgb(59, 59, 59);
+  
+}
+
+.hotal2{
+   width:65px;
+  height:65px;
+}
+
+.overlay-hotal {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: none;
+}
+
+.overlay-hotal.open {
+    display: grid;
+    grid-template-rows: 50px auto;
+    box-shadow: 0 0 19 rgb(48, 48, 48, 0.4);
+}
+
+.overlay-inner-hotal {
+    color: var(--white);
+    display: grid;
+    grid-gap: 20px;
+    grid-auto-columns: auto;
+    grid-template-rows: repeat(4, 1fr);
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    margin: 5px;
+    padding: 10px;
+}
+
+.close {
+    margin: 5px;
+    align-self: start;
+    justify-self: start;
+    color: black;
+}
+
+.inner_info-hotal {
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    padding: 20px;
+}
+
+.inner-info-title-hotal {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}
+
+.inner_info-hotal ul {
+    text-align: right;
+}
+
+
+/*hotal*/
+    
+</style>
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./responsive-START.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>TRANSATOUR FRANCE</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="top">
+            <header class="hero">
+                <h1>TRANSATOUR FRANCE</h1>
+        
+
+                <a href="https://itunes.apple.com/us/app/snapchat/id447188370?mt=8"><i class="fa fa-snapchat-square top-icon"></i></a>
+                <a href="https://www.facebook.com/"><i class="fa fa-facebook-square top-icon"></i></a>
+                <a href="https://www.instagram.com/ricardoslongo/"><i class="fa fa-instagram top-icon"></i></a>
+
+            </header>
+            <div class="cta cta1">
+                <p class="kinds"> HAJJ</p>
+                <a href="#" class=" details_haj details">  pour plus de details</a>
+                <div class="overlay-haj">
+                    <button class="close-haj close"> fermeture</button>
+                    <div class="overlay-inner">
+                        <div class="inner_info">
+                            <h2 class="inner-info-title">pack a</h2>
+                            <ul>
+                                <li> plus de details</li>
+                            </ul>
+                        </div>
+                        <div class="inner_info">
+                            <h2 class="inner-info-title">pack b</h2>
+                            <ul>
+                                <li> plus de details</li>
+                            </ul>
+                        </div>
+                        <div class="inner_info">
+                            <h2 class="inner-info-title">pack c </h2>
+                            <ul>
+                                <li>plus de details </li>
+                            </ul>
+                        </div>
+                        <div class="inner_info">
+                            <h2 class="inner-info-title">pack d</h2>
+                            <ul>
+                                <li> plus de details</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta cta2">
+                <p class="kinds">Omra</p>
+                <a href="{{ path('app_depot')}}" class=" details_omra details"> plus de details </a>
+                <div class="overlay-omra">
+                    <button class="close-omra close"> fermetures</button>
+                    <div class="overlay-inner">
+                        <div class="inner_info">
+                            <h2 class="inner-info-title">pack a</h2>
+                            <ul>
+                                <li>plus de details </li>
+                            </ul>
+                        </div>
+                        <div class="inner_info">
+                            <h2 class="inner-info-title">pack b</h2>
+                            <ul>
+                                <li>plus de details </li>
+                            </ul>
+                        </div>
+                        <div class="inner_info">
+                            <h2 class="inner-info-title">pack c</h2>
+                            <ul>
+                                <li>details </li>
+                            </ul>
+                        </div>
+                        <div class="inner_info">
+                            <h2 class="inner-info-title">pack d</h2>
+                            <ul>
+                                <li>plus de details </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--
+        <nav class="menu">
+            <button aria-expanded="false" aria-controls="menu-list">
+        <span class="open">☰</span>
+       
+       
+      </button>
+            <ul id="menu-list">
+                <li>
+                    <a href="">list</a>
+                </li>
+                <li>
+                    <a href="">list</a>
+                </li>
+                <li>
+                    <a href="">list</a>
+                </li>
+
+            </ul>
+            -->
+        </nav>
+
+        <section class="features">
+            <div class="feature">
+                <a href="#" class="transportation"> <span class="icon fa fa-train"> 	</span></a>
+                <h3> transfert</h3>
+                <div class="overlay-transp">
+                    <button class="close-transp close"> fermeture</button>
+                    <div class="overlay-inner-transp">
+                        <div class="inner_info-transp">
+                            <h2 class="inner-info-title-transp">pack a</h2>
+                            <ul>
+                                <li>plus de details </li>
+                            </ul>
+                        </div>
+                        <div class="inner_info-transp">
+                            <h2 class="inner-info-title-transp">pack b</h2>
+                            <ul>
+                                <li>details </li>
+                            </ul>
+                        </div>
+                        <div class="inner_info-transp">
+                            <h2 class="inner-info-title-transp"> pack c</h2>
+                            <ul>
+                                <li> plus de details </li>
+                            </ul>
+                        </div>
+                        <div class="inner_info-transp">
+                            <h2 class="inner-info-title-transp"> pack d</h2>
+                            <ul>
+                                <li> plus de details </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="feature">
+                <span><a href="#" class="hotal"><img src="{{asset('image/hotels.jpg')}}" class="icon hotal2"></a></span>
+                <h3> Hotels</h3>
+                <div class="overlay-hotal">
+                    <button class="close-hotal close"> </button>
+                    <div class="overlay-inner-hotal">
+                        <div class="inner_info-hotal">
+                            <h2 class="inner-info-title-hotal"> pack a</h2>
+                            <ul>
+                                <li> plus de details</li>
+                            </ul>
+                        </div>
+                        <div class="inner_info-hotal">
+                            <h2 class="inner-info-title-hotal"> pack b </h2>
+                            <ul>
+                                <li> plus de details</li>
+                            </ul>
+                        </div>
+                        <div class="inner_info-hotal">
+                            <h2 class="inner-info-title-hotal">pack c</h2>
+                            <ul>
+                                <li> details </li>
+                            </ul>
+                        </div>
+                        <div class="inner_info-hotal">
+                            <h2 class="inner-info-title-hotal"> pack d</h2>
+                            <ul>
+                                <li> details </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--
+            <div class="feature">
+                <span class="icon">icon</span>
+                <h3>quality</h3>
+                <p>Info</p>
+            </div>
+            <div class="feature">
+                <span class="icon">icon</span>
+                <h3>More Services</h3>
+                <p>Info</p>
+            </div>
+            -->
+        </section>
+        
+        <section class="gallery-one">
+            <h2>Gallery</h2>
+            <div class="row">
+                <img src="{{asset('image/hotels.jpg')}}" id="img_galary">
+            </div>
+            <div class="col">
+                <a href="image/omra1.jpg" class="thumbnail">
+                <img src="{{asset('image/omra1.jpg')}}" alt="">
+                </a>
+                <a href="image/omra2.jpg" class="thumbnail">
+                <img src="{{asset('image/omra2.jpg')}}" alt="">
+                </a>
+                <a href="image/omra3.jpg" class="thumbnail">
+                <img src="{{asset('image/omra3.jpg')}}" alt="">
+                </a>
+                <a href="image/omra4.jpg" class="thumbnail">
+                <img src="{{asset('image/omra4.jpg')}}" alt="">
+                </a>
+                <a href="image/omra5.jpg" class="thumbnail">
+                <img src="{{asset('image/omra5.jpg')}}" alt="">
+                </a>
+                <a href="image/omra6.jpg" class="thumbnail">
+                <img src="{{asset('image/omra6.jpg')}}" alt="">
+                </a>
+                <a href="image/omra7.jpg" class="thumbnail">
+                <img src="{{asset('image/omra7.jpg')}}" alt="">
+                </a>
+                <a href="image/omra8.jpg" class="thumbnail">
+                <img src="{{asset('image/omra8.jpg')}}" alt="">
+                </a>
+            </div>  
+        </section>
+
+        <script src="script.js">
+        </script>
+</body>
+
+</html>
+
+
+
+{% endblock %}

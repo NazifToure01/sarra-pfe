@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.idea",
+    "\\src",
+    "\\src\\Entity",
+    "\\src\\Form"
+  ],
+  "SelectedNode": "\\src\\Entity\\User.php",
+  "PreviewInSolutionExplorer": false
+}
